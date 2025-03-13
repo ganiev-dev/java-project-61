@@ -2,6 +2,8 @@ plugins {
     id("java")
     id ("com.github.ben-manes.versions") version ("0.47.0")
     application
+    checkstyle
+    jacoco
 }
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
@@ -24,3 +26,8 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+jacoco {
+    toolVersion = "0.8.10"
+}
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
+
