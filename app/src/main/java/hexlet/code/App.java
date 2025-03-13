@@ -12,7 +12,6 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         int choise = scanner.nextInt();
 
-
         switch (choise) {
             case 1:
                 Cli.greetings();
