@@ -7,7 +7,8 @@ public class Even {
         Engine.start("even", "Answer 'yes' if the number is even, otherwise answer 'no'.");
     }
     public static String[] createRound() {
-        int questionNum = generateRandomNumber(100);
+        final int maxGenVal = 100;
+        int questionNum = generateRandomNumber(maxGenVal);
 
         //Question
         String question = questionNum + "";
