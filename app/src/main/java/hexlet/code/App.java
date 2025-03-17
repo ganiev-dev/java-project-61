@@ -21,6 +21,7 @@ public class App {
         System.out.print("Your choice: ");
         Scanner scanner = new Scanner(System.in);
         String choise = scanner.nextLine();
+
         switch (choise) {
             case "1":
                 Cli.greetings();
