@@ -3,3 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/57d2a6553ec1ff176559/maintainability)](https://codeclimate.com/github/ganiev-dev/java-project-61/maintainability)
 [![asciicast](https://asciinema.org/a/707934.svg)](https://asciinema.org/a/707934)
 [![asciicast](https://asciinema.org/a/708413.svg)](https://asciinema.org/a/708413)
+[![asciicast](https://asciinema.org/a/708429.svg)](https://asciinema.org/a/708429)

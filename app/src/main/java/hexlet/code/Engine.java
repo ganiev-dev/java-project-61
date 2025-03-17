@@ -49,6 +49,7 @@ public class Engine {
         return switch (game) {
             case "even" -> Even.createRound();
             case "calc" -> Calc.createRound();
+            case "gcd" -> Gcd.createRound();
             default -> null;
         };
     }
