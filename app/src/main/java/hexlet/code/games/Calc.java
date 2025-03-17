@@ -7,7 +7,7 @@ public class Calc {
     }
 
     public static String[] createRound() {
-        int maxGenVal = 100;
+        final int maxGenVal = 100;
         int a = Engine.generateRandomNumber(maxGenVal);
         int b = Engine.generateRandomNumber(maxGenVal);
 

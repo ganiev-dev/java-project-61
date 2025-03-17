@@ -6,7 +6,7 @@ public class Gcd {
         Engine.start("gcd", "Find the greatest common divisor of given numbers.");
     }
     public static String[] createRound() {
-        int maxGenVal = 100;
+        final int maxGenVal = 100;
         int randomNumA = Engine.generateRandomNumber(maxGenVal);
         int randomNumB = Engine.generateRandomNumber(maxGenVal);
 

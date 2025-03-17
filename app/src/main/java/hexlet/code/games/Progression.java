@@ -6,8 +6,8 @@ public class Progression {
         Engine.start("progression", "What number is missing in the progression?");
     }
     public static String[] createRound() {
-        int maxGenVal = 100;
-        int lengthOfProgression = 10;
+        final int maxGenVal = 100;
+        final int lengthOfProgression = 10;
         int startNum = Engine.generateRandomNumber(maxGenVal);
         int positionOfHiddenNum = Engine.generateRandomNumber(lengthOfProgression);
         String rightAnswer = "test";

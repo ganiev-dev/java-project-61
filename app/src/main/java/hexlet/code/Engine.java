@@ -20,7 +20,8 @@ public class Engine {
         System.out.println(rules);
 
         //game
-        for (int i = 1; i <= 3; i++) {
+        final int roundCounter = 3;
+        for (int i = 1; i <= roundCounter; i++) {
 
             //get question & right answer
             String[] round = chooseGameLogic(game);
