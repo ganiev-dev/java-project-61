@@ -7,8 +7,8 @@ public class Gcd {
     }
     public static String[] createRound() {
         final int maxGenVal = 100;
-        int randomNumA = Engine.generateRandomNumber(maxGenVal);
-        int randomNumB = Engine.generateRandomNumber(maxGenVal);
+        int randomNumA = Engine.generateRandomNumber(maxGenVal) + 1;
+        int randomNumB = Engine.generateRandomNumber(maxGenVal) + 1;
 
         //Question
         String question = randomNumA + " " + randomNumB;
