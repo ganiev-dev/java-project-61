@@ -7,10 +7,12 @@ public class Calc {
     }
 
     public static String[] createRound() {
-        int a = Engine.generateRandomNumber(100);
-        int b = Engine.generateRandomNumber(100);
-        int c = (int) Math.ceil(Engine.generateRandomNumber(3));
+        int maxGenVal = 100;
+        int a = Engine.generateRandomNumber(maxGenVal);
+        int b = Engine.generateRandomNumber(maxGenVal);
+
         String[] operators = {"+", "-", "*"};
+        int c = (int) Math.ceil(Engine.generateRandomNumber(operators.length));
 
         //Question
         String question = a + " " + operators[c] + " " + b;
