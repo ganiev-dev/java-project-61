@@ -1,26 +1,26 @@
 package hexlet.code;
-
+import hexlet.code.games.*;
 import java.util.Scanner;
 
-public class Even {
-    public static void start() {
+public class Engine {
+    public static void start(String game, String rules) {
+
+        //greetings
         System.out.print("Welcome to the Brain Games! \nMay I have your name? ");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
+        Scanner scanName = new Scanner(System.in);
+        String name = scanName.nextLine();
         System.out.print("Hello, " + name + "!" + "\n");
+
+        //rules
+        System.out.println(rules);
 
         //game
         for (int i = 1; i <= 3; i++) {
 
             //get question & right answer
-            int questionNum = generateRandomNumber(100);
-
-            //Question
-            String question = questionNum + "";
-
-            //Right answer
-            String rightAnswer = (questionNum % 2 == 0) ? "yes" : "no";
-
+            String[] round = chooseGameLogic(game);
+            String question = round[0];
+            String rightAnswer = round[1];
 
             //request
             System.out.println("Question: " + question);
@@ -40,9 +40,16 @@ public class Even {
         }
         System.out.printf("Congratulations, %s!\n", name);
     }
+
     public static int generateRandomNumber(int rangeNum) {
         return (int) (Math.random() * rangeNum);
     }
+
+    public static String[] chooseGameLogic(String game) {
+        return switch (game) {
+            case "even" -> Even.createRound();
+            case "calc" -> Calc.createRound();
+            default -> null;
+        };
+    }
 }
-
-
