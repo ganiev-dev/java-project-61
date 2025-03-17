@@ -47,8 +47,11 @@ public class Engine {
         System.out.printf("Congratulations, %s!\n", name);
     }
 
-    public static int generateRandomNumber(int rangeNum) {
-        return (int) (Math.random() * rangeNum);
+    public static int generateRandomNumber(int maxNum) {
+        return (int) (Math.random() * maxNum);
+    }
+    public static int generateRandomNumber(int minNum, int maxNum) {
+        return (int) (Math.random() * maxNum + minNum);
     }
 
     public static String[] chooseGameLogic(String game) {

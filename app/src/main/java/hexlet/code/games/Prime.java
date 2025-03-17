@@ -10,10 +10,11 @@ public class Prime {
         int randomNumber = Engine.generateRandomNumber(maxGenVal);
         String rightAnswer = "yes";
         for (int i = 2; i < randomNumber; i++) {
-            if (randomNumber % i == 0) {
+            if (randomNumber < 2 || randomNumber % i == 0) {
                 rightAnswer = "no";
             }
         }
+
         //Question
         String question = randomNumber + "";
 
