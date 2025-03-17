@@ -50,6 +50,8 @@ public class Engine {
             case "even" -> Even.createRound();
             case "calc" -> Calc.createRound();
             case "gcd" -> Gcd.createRound();
+            case "progression" -> Progression.createRound();
+            case "prime" -> Prime.createRound();
             default -> null;
         };
     }
