@@ -1,37 +1,42 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
+import static hexlet.code.Utils.generateRandomNumber;
 
 public class Calc {
     public static void start() {
-        Engine.start("calc", "What is the result of the expression?");
-    }
-
-    public static String[] createRound() {
         final int maxGenVal = 100;
-        int a = Engine.generateRandomNumber(maxGenVal);
-        int b = Engine.generateRandomNumber(maxGenVal);
 
-        String[] operators = {"+", "-", "*"};
-        int c = (int) Math.ceil(Engine.generateRandomNumber(operators.length));
+        //Create arr with questions and right answers
+        String[] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER * 2];
+        for (int i = 0; i < questionsAndRightAnswers.length; i += 2) {
 
-        //Question
-        String question = a + " " + operators[c] + " " + b;
+            int a = generateRandomNumber(maxGenVal);
+            int b = generateRandomNumber(maxGenVal);
 
-        //Right answer
-        String rightAnswer = "";
-        switch (operators[c]) {
-            case "+":
-                rightAnswer = a + b + "";
-                break;
-            case "-":
-                rightAnswer = a - b + "";
-                break;
-            case "*":
-                rightAnswer = a * b + "";
-                break;
-            default: break;
+            //Question
+            String[] operators = {"+", "-", "*"};
+            int c = (int) Math.ceil(generateRandomNumber(operators.length));
+            String question = a + " " + operators[c] + " " + b;
+
+            //Right answer
+            String rightAnswer = "";
+            switch (operators[c]) {
+                case "+":
+                    rightAnswer = a + b + "";
+                    break;
+                case "-":
+                    rightAnswer = a - b + "";
+                    break;
+                case "*":
+                    rightAnswer = a * b + "";
+                    break;
+                default: break;
+            }
+
+            questionsAndRightAnswers[i] = question;
+            questionsAndRightAnswers[i + 1] = rightAnswer;
         }
 
-        return new String[]{question, rightAnswer};
+        Engine.start("What is the result of the expression?", questionsAndRightAnswers);
     }
 }

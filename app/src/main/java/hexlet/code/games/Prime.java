@@ -1,24 +1,30 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Prime {
     public static void start() {
-        Engine.start("prime", "Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-    }
-    public static String[] createRound() {
         final int maxGenVal = 100;
-        int randomNumber = Engine.generateRandomNumber(maxGenVal);
-        String rightAnswer = "yes";
-        for (int i = 2; i < randomNumber; i++) {
-            if (randomNumber < 2 || randomNumber % i == 0) {
-                rightAnswer = "no";
+
+        //Create arr with questions and right answers
+        String[] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER * 2];
+        for (int i = 0; i < questionsAndRightAnswers.length; i += 2) {
+            int questionNum = Utils.generateRandomNumber(maxGenVal);
+            String rightAnswer = "yes";
+            for (int j = 2; j < questionNum; j++) {
+                if (questionNum < 2 || questionNum % j == 0) {
+                    rightAnswer = "no";
+                }
             }
+
+            //Question
+            String question = questionNum + "";
+
+            //Right answer
+            questionsAndRightAnswers[i] = question;
+            questionsAndRightAnswers[i + 1] = rightAnswer;
         }
 
-        //Question
-        String question = randomNumber + "";
-
-        String[] result = {question, rightAnswer};
-        return result;
+        Engine.start("Answer 'yes' if given number is prime. Otherwise answer 'no'.", questionsAndRightAnswers);
     }
 }
