@@ -3,36 +3,43 @@ import hexlet.code.Engine;
 import static hexlet.code.Utils.generateRandomNumber;
 
 public class Gcd {
+    static final String RULES = "Find the greatest common divisor of given numbers.";
+
     public static void start() {
-        final int minGenVal = 1;
-        final int maxGenVal = 100;
+        final int minValGameNum = 1;
+        final int maxValGameNum = 100;
 
         //Create arr with questions and right answers
-        String[] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER * 2];
-        for (int i = 0; i < questionsAndRightAnswers.length; i += 2) {
-            int randomNumA = generateRandomNumber(minGenVal, maxGenVal);
-            int randomNumB = generateRandomNumber(minGenVal, maxGenVal);
+        String[][] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER][2];
+
+        for (int i = 0; i < questionsAndRightAnswers.length; i++) {
+            int randomNumA = generateRandomNumber(minValGameNum, maxValGameNum);
+            int randomNumB = generateRandomNumber(minValGameNum, maxValGameNum);
 
             //Question
             String question = randomNumA + " " + randomNumB;
 
             //Right answer
-            int highNum = Math.max(randomNumA, randomNumB);
-            int lowNum = Math.min(randomNumA, randomNumB);
-            int gcdNum = 0;
+            String rightAnswer = findGcd(randomNumA, randomNumB) + "";
 
-            while (lowNum != 0) {
-                gcdNum = lowNum;
-                lowNum = highNum % lowNum;
-                highNum = gcdNum;
-            }
-
-            String rightAnswer = gcdNum + "";
-
-            questionsAndRightAnswers[i] = question;
-            questionsAndRightAnswers[i + 1] = rightAnswer;
+            //Set
+            questionsAndRightAnswers[i][0] = question;
+            questionsAndRightAnswers[i][1] = rightAnswer;
         }
 
-        Engine.start("Find the greatest common divisor of given numbers.", questionsAndRightAnswers);
+        Engine.start(RULES, questionsAndRightAnswers);
+    }
+
+    public static int findGcd(int randomNumA, int randomNumB) {
+        int highNum = Math.max(randomNumA, randomNumB);
+        int lowNum = Math.min(randomNumA, randomNumB);
+        int gcdNum = 0;
+
+        while (lowNum != 0) {
+            gcdNum = lowNum;
+            lowNum = highNum % lowNum;
+            highNum = gcdNum;
+        }
+        return gcdNum;
     }
 }

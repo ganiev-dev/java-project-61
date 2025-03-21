@@ -3,40 +3,49 @@ import hexlet.code.Engine;
 import static hexlet.code.Utils.generateRandomNumber;
 
 public class Calc {
+    static final String RULES = "What is the result of the expression?";
+
     public static void start() {
-        final int maxGenVal = 100;
+        final int maxValGameNum = 100;
 
         //Create arr with questions and right answers
-        String[] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER * 2];
-        for (int i = 0; i < questionsAndRightAnswers.length; i += 2) {
-
-            int a = generateRandomNumber(maxGenVal);
-            int b = generateRandomNumber(maxGenVal);
+        String[][] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER][2];
+        for (int i = 0; i < questionsAndRightAnswers.length; i++) {
+            int a = generateRandomNumber(maxValGameNum);
+            int b = generateRandomNumber(maxValGameNum);
+            String operand = chooseOperand();
 
             //Question
-            String[] operators = {"+", "-", "*"};
-            int c = (int) Math.ceil(generateRandomNumber(operators.length));
-            String question = a + " " + operators[c] + " " + b;
+            String question = a + " " + operand + " " + b;
 
             //Right answer
-            String rightAnswer = "";
-            switch (operators[c]) {
-                case "+":
-                    rightAnswer = a + b + "";
-                    break;
-                case "-":
-                    rightAnswer = a - b + "";
-                    break;
-                case "*":
-                    rightAnswer = a * b + "";
-                    break;
-                default: break;
-            }
+            String rightAnswer = resultOfOperation(a, b, operand);
 
-            questionsAndRightAnswers[i] = question;
-            questionsAndRightAnswers[i + 1] = rightAnswer;
+            //Set
+            questionsAndRightAnswers[i][0] = question;
+            questionsAndRightAnswers[i][1] = rightAnswer;
         }
 
-        Engine.start("What is the result of the expression?", questionsAndRightAnswers);
+        Engine.start(RULES, questionsAndRightAnswers);
+    }
+
+    public static String chooseOperand() {
+        String[] operators = {"+", "-", "*"};
+        int c = (int) Math.ceil(generateRandomNumber(operators.length));
+        return operators[c];
+    }
+
+    public static String resultOfOperation(int a, int b, String operand) {
+        switch (operand) {
+            case "+":
+                return a + b + "";
+            case "-":
+                return a - b + "";
+            case "*":
+                return a * b + "";
+            default:
+                break;
+        }
+        return "doesnt find operand";
     }
 }

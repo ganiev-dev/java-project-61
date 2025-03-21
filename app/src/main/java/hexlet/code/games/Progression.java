@@ -1,39 +1,43 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
-
 import static hexlet.code.Utils.generateRandomNumber;
 
 public class Progression {
+    static final String RULES = "What number is missing in the progression?";
+
     public static void start() {
-        final int maxGenVal = 100;
+        final int maxValGameNum = 100;
         final int lengthOfProgression = 10;
 
         //Create arr with questions and right answers
-        String[] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER * 2];
-        for (int i = 0; i < questionsAndRightAnswers.length; i += 2) {
-            int startNum = generateRandomNumber(maxGenVal);
+        String[][] questionsAndRightAnswers = new String[Engine.ROUND_COUNTER][2];
+        for (int i = 0; i < questionsAndRightAnswers.length; i++) {
+            int startNum = generateRandomNumber(maxValGameNum);
             int positionOfHiddenNum = generateRandomNumber(lengthOfProgression);
-            String rightAnswer = "test";
+            var progression = createAndFillProgression(lengthOfProgression, startNum);
 
-            //create and fill
-            String[] progression = new String[lengthOfProgression];
-            for (int j = 0; j < lengthOfProgression; j++) {
-                progression[j] = startNum + "";
-                if (j == positionOfHiddenNum) {
-                    rightAnswer = progression[j];
-                    progression[j] = "..";
-                }
-                startNum += 2;
-            }
+            //Right answer
+            String rightAnswer = progression[positionOfHiddenNum];
 
             //Question
+            progression[positionOfHiddenNum] = "..";
             String question = String.join(" ", progression);
 
-            questionsAndRightAnswers[i] = question;
-            questionsAndRightAnswers[i + 1] = rightAnswer;
+            //Set
+            questionsAndRightAnswers[i][0] = question;
+            questionsAndRightAnswers[i][1] = rightAnswer;
         }
 
-        Engine.start("What number is missing in the progression?", questionsAndRightAnswers);
+        Engine.start(RULES, questionsAndRightAnswers);
+    }
+
+    public static String[] createAndFillProgression(int lengthOfProgression, int startNum) {
+        String[] progression = new String[lengthOfProgression];
+        for (int i = 0; i < lengthOfProgression; i++) {
+            progression[i] = startNum + "";
+            startNum += 2;
+        }
+        return progression;
     }
 
 }
