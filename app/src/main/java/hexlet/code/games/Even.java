@@ -17,7 +17,7 @@ public class Even {
             String question = questionNum + "";
 
             //Right answer
-            String rightAnswer = isEven(questionNum);
+            String rightAnswer = isEven(questionNum) ? "yes" : "no";
 
             //Set
             questionsAndRightAnswers[i][0] = question;
@@ -27,7 +27,7 @@ public class Even {
         Engine.start(RULES, questionsAndRightAnswers);
     }
 
-    public static String isEven(int questionNum) {
-        return (questionNum % 2 == 0) ? "yes" : "no";
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }

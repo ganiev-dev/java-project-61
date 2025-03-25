@@ -17,7 +17,7 @@ public class Prime {
             String question = questionNum + "";
 
             //Right answer
-            String rightAnswer = isPrime(questionNum);
+            String rightAnswer = isPrime(questionNum) ? "yes" : "no";
 
             //Set
             questionsAndRightAnswers[i][0] = question;
@@ -27,16 +27,16 @@ public class Prime {
         Engine.start(RULES, questionsAndRightAnswers);
     }
 
-    public static String isPrime(int questionNum) {
-        if (!(questionNum < 2)) {
-            for (int j = 2; j * j <= questionNum; j++) {
-                if (questionNum % j == 0) {
-                    return "no";
+    public static boolean isPrime(int number) {
+        if (!(number < 2)) {
+            for (int j = 2; j * j <= number; j++) {
+                if (number % j == 0) {
+                    return false;
                 }
             }
         } else {
-            return "no";
+            return false;
         }
-        return "yes";
+        return true;
     }
 }

@@ -19,7 +19,7 @@ public class Calc {
             String question = a + " " + operand + " " + b;
 
             //Right answer
-            String rightAnswer = resultOfOperation(a, b, operand);
+            String rightAnswer = resultOfOperation(a, b, operand) + "";
 
             //Set
             questionsAndRightAnswers[i][0] = question;
@@ -35,17 +35,12 @@ public class Calc {
         return operators[c];
     }
 
-    public static String resultOfOperation(int a, int b, String operand) {
-        switch (operand) {
-            case "+":
-                return a + b + "";
-            case "-":
-                return a - b + "";
-            case "*":
-                return a * b + "";
-            default:
-                break;
-        }
-        return "doesnt find operand";
+    public static int resultOfOperation(int a, int b, String operand) {
+        return switch (operand) {
+            case "+" -> a + b;
+            case "-" -> a - b;
+            case "*" -> a * b;
+            default -> 0;
+        };
     }
 }
